@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import Header from './components/Header'
 import Produtos from './containers/Produtos'
-
 import { GlobalStyle } from './styles'
 
 export type Game = {
@@ -20,17 +19,11 @@ function App() {
 
   useEffect(() => {
     fetch('http://localhost:4000/produtos')
-      .then((res) => res.json())
-      .then((res) => setGames(res))
+      .then((gameRes) => gameRes.json())
+      .then((gameRes) => setGames(gameRes))
   }, [])
 
-  function adicionarAoCarrinho(jogo: Game) {
-    if (carrinho.find((game) => game.id === jogo.id)) {
-      alert('Item já adicionado')
-    } else {
-      setCarrinho([...carrinho, jogo])
-    }
-  }
+  
 
   return (
     <>
